@@ -1,0 +1,37 @@
+/*CSS file for humanityhacks website*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #FDD692;
+}
+
+.img {
+	background-image: url('images/protest.png');
+}
+
+.topnav {
+	margin: auto;
+	text-align: center;
+	background-color: #333;
+	overflow: hidden;
+}
+
+.topnav li {
+	float: center;
+	padding: 20px 20px;
+	font-size: 17px;
+	display: inline-block;
+	margin: 0px;
+}
+
+.topnav a.active {
+	color: #FFC0CB;
+	text-decoration: none !important e;
+}
+
+.topnav li a {
+	color: white;
+}
