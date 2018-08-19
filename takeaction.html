@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="main.css" rel="stylesheet" type="text/css" />
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Take Action</title> 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7355le-CzFM1JrEeXKWOIRcdcYZ6r7WA&callback=myMap" type="text/javascript"></script>
+</head> 
+<body>
+<h1>Take Direct Action</h1>
+<h3>Click on any markers to find opportunities to take action in your city!</h3>
+  <div id="map" style="width: 100%; height: 500px;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+      ['San Francisco: LGBT Pride Parade', 37.773972, -122.431297, 5],
+      ['San Diego: Immigration Action Protest', 32.715736, -117.161087, 4],
+      ['Las Vegas: Immigration Policy Protest', 36.114647, -115.172813, 3],
+      ['New York City: Celebrating Alliance of Families for Justice', 40.730610, -73.935242, 2],
+      ['Philadelphia: Women&#39;s March', 39.952583, -75.165222, 1]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4.5,
+      center: new google.maps.LatLng(41.850033, -87.6500523),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+</body>
+</html>
